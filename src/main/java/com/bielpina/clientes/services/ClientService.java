@@ -29,6 +29,7 @@ public class ClientService {
         Page<Client> result = repository.findAll(pageable);
         return result.map(x -> new ClientDTO(x));
     }
+<<<<<<< HEAD
 
     @Transactional
     public ClientDTO insert(ClientDTO dto) {
@@ -53,4 +54,6 @@ public class ClientService {
         entity.setBirthDate(dto.getBirthDate());
         entity.setChildren(dto.getChildren());
     }
+=======
+>>>>>>> 41e3ae0... GET Clients paged
 }
