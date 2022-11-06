@@ -23,7 +23,7 @@ public class ClientService {
     @Transactional(readOnly = true)
     public ClientDTO findById(Long id) {
         Client client = repository.findById(id).orElseThrow(
-                () -> new ResourceNotFoundException("Recurso não encontrado"));
+                () -> new ResourceNotFoundException("Cliente não encontrado"));
         return new ClientDTO(client);
     }
 
@@ -50,7 +50,7 @@ public class ClientService {
             return new ClientDTO(entity);
         }
         catch (EntityNotFoundException e) {
-            throw new ResourceNotFoundException("Recurso não encontrado");
+            throw new ResourceNotFoundException("Cliente inexistente");
         }
     }
 
@@ -59,7 +59,7 @@ public class ClientService {
             repository.deleteById(id);
         }
         catch (EmptyResultDataAccessException e) {
-            throw new ResourceNotFoundException("Recurso não encontrado");
+            throw new ResourceNotFoundException("Cliente inexistente");
         }
         catch (DataIntegrityViolationException e) {
             throw new DatabaseException("Falha de integridade referencial");
