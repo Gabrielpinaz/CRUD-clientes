@@ -1,15 +1,23 @@
 package com.bielpina.clientes.dto;
 
 import com.bielpina.clientes.entities.Client;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.PastOrPresent;
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.Size;
 
 import java.time.LocalDate;
 
 public class ClientDTO {
 
     private Long id;
+    @Size(min = 3, max = 80, message = "Nome precisa ter de 3 a 80 caracteres")
+    @NotBlank(message = "Campo requerido")
     private String name;
     private String cpf;
+    @Positive(message = "O preço deve ser positivo")
     private Double income;
+    @PastOrPresent(message = "A data não pode ser futura")
     private LocalDate birthDate;
     private Integer children;
 
